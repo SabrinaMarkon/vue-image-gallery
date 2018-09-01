@@ -1,9 +1,23 @@
 <template>
   <div class="gallery">
-    <a v-on:click="count++" v-for="image in images" v-bind:key="image.id" href="#">
-      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" v-bind:src="image.thumbnail" /></div>
-    </a>
-    <h1>{{ count }}</h1>
+    <div class="container">
+      <div class="row">
+        <div>
+          <div class="container image-detail">
+            <div class="row">
+              <div class="col-sm-8 col-xs-12">
+                <img :src="selectedImage.imageLink" class="img-responsive">
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                <h1>{{selectedImage.title}}</h1>
+                <p>{{selectedImage.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a @click="showImage(image)" v-for="image in images" v-bind:key="image.id" href="#"><div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" :src="image.thumbnail" /></div></a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,7 +31,7 @@ v-else - works just like v-if, but the condition is false.
 
 v-show - can be used instead of v-if. However, v-show always compiles and renders everything, and it just uses display:none (a CSS property) to hide the element.
 
-v-on - used to attach an event listener to an element.
+v-on - used to attach an event listener to an element. Short form: ie. @click is short for v-on:click.
 
 v-for - used to render a list of items.
 */
@@ -25,17 +39,23 @@ v-for - used to render a list of items.
 export default {
   data () {
     return {
-      count: 0,
+      selectedImage: '',
       images: [
-        { id: 0, thumbnail: 'https://vuejsbook.com/img/vuejs/img1.jpg' },
-        { id: 1, thumbnail: 'https://vuejsbook.com/img/vuejs/img2.jpg' },
-        { id: 2, thumbnail: 'https://vuejsbook.com/img/vuejs/img3.jpg' },
-        { id: 3, thumbnail: 'https://vuejsbook.com/img/vuejs/img4.jpg' },
-        { id: 4, thumbnail: 'https://vuejsbook.com/img/vuejs/img5.jpg' },
-        { id: 5, thumbnail: 'https://vuejsbook.com/img/vuejs/img6.jpg' },
-        { id: 6, thumbnail: 'https://vuejsbook.com/img/vuejs/img7.jpg' },
-        { id: 7, thumbnail: 'https://vuejsbook.com/img/vuejs/img8.jpg' }
+        { id: 1, title: 'First image', description: 'First image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img1.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img1-l.jpg' },
+        { id: 2, title: 'Second image', description: 'Second image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img2.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img2-l.jpg' },
+        { id: 3, title: 'Third image', description: 'Third image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img3.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img3-l.jpg' },
+        { id: 4, title: 'Fourth image', description: 'Fourth image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img4.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img4-l.jpg' },
+        { id: 5, title: 'Fifth image', description: 'Fifth image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img5.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img5-l.jpg' },
+        { id: 6, title: 'Sixth image', description: 'Sixth image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img6.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img6-l.jpg' },
+        { id: 7, title: 'Seventh image', description: 'Seventh image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img7.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img7-l.jpg' },
+        { id: 8, title: 'Eight image', description: 'Eighth image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img8.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img8-l.jpg' }
       ]
+    }
+  },
+  // In Vue, we can define a method in a component by using the methods option. We can add the methods option right below the data option
+  methods: {
+    showImage: function (image) {
+      this.selectedImage = image
     }
   }
 }
