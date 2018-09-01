@@ -1,8 +1,9 @@
 <template>
   <div class="gallery">
-    <a v-for="image in images" v-bind:key="image.id" href="#">
+    <a v-on:click="count++" v-for="image in images" v-bind:key="image.id" href="#">
       <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" v-bind:src="image.thumbnail" /></div>
     </a>
+    <h1>{{ count }}</h1>
   </div>
 </template>
 
@@ -24,6 +25,7 @@ v-for - used to render a list of items.
 export default {
   data () {
     return {
+      count: 0,
       images: [
         { id: 0, thumbnail: 'https://vuejsbook.com/img/vuejs/img1.jpg' },
         { id: 1, thumbnail: 'https://vuejsbook.com/img/vuejs/img2.jpg' },
