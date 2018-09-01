@@ -1,6 +1,6 @@
 <template>
   <div class="gallery">
-    <a v-for="{image, id} in images" v-bind:key="id" href="#">
+    <a v-for="image in images" v-bind:key="image.id" href="#">
       <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" v-bind:src="image.thumbnail" /></div>
     </a>
   </div>
@@ -25,14 +25,14 @@ export default {
   data () {
     return {
       images: [
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img1.jpg' },
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img2.jpg' },
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img3.jpg' },
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img4.jpg' },
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img5.jpg' },
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img6.jpg' },
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img7.jpg' },
-        { thumbnail: 'https://vuejsbook.com/img/vuejs/img8.jpg' }
+        { id: 0, thumbnail: 'https://vuejsbook.com/img/vuejs/img1.jpg' },
+        { id: 1, thumbnail: 'https://vuejsbook.com/img/vuejs/img2.jpg' },
+        { id: 2, thumbnail: 'https://vuejsbook.com/img/vuejs/img3.jpg' },
+        { id: 3, thumbnail: 'https://vuejsbook.com/img/vuejs/img4.jpg' },
+        { id: 4, thumbnail: 'https://vuejsbook.com/img/vuejs/img5.jpg' },
+        { id: 5, thumbnail: 'https://vuejsbook.com/img/vuejs/img6.jpg' },
+        { id: 6, thumbnail: 'https://vuejsbook.com/img/vuejs/img7.jpg' },
+        { id: 7, thumbnail: 'https://vuejsbook.com/img/vuejs/img8.jpg' }
       ]
     }
   }
