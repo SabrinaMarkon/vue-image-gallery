@@ -24,6 +24,16 @@ v-show - can be used instead of v-if. However, v-show always compiles and render
 v-on - used to attach an event listener to an element. Short form: ie. @click is short for v-on:click.
 
 v-for - used to render a list of items.
+
+** Every Vue instance implements an events interface, this means it can:
+
+Listen to an event using $on(event)
+
+Listen to an event one-time using $once(event)
+
+Trigger an event using $emit(event)
+
+Remove an event listener using $off()
 */
 
 export default {
