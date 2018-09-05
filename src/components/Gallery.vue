@@ -2,7 +2,8 @@
   <div class="gallery">
     <div class="container">
       <div class="row">
-        <image-list :images="images" :selectedImage="selectedImage"></image-list>
+        <single-image :selectedImage="selectedImage"></single-image>
+        <image-list :images="images" v-on:emitImage="showImage"></image-list>
       </div>
     </div>
   </div>
@@ -10,6 +11,7 @@
 
 <script>
 import ImageList from './ImageList'
+import SingleImage from './SingleImage'
 /*
 ** Please remember that: "If we want to display any image (loaded from our data) in Vue, we must use :src or v-bind:src"
 
@@ -26,7 +28,7 @@ v-for - used to render a list of items.
 
 export default {
   name: 'gallery',
-  components: {ImageList},
+  components: {SingleImage, ImageList},
   data () {
     return {
       selectedImage: '',
@@ -40,6 +42,11 @@ export default {
         { id: 7, title: 'Seventh image', description: 'Seventh image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img7.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img7-l.jpg' },
         { id: 8, title: 'Eight image', description: 'Eighth image description', thumbnail: 'https://vuejsbook.com/img/vuejs/img8.jpg', imageLink: 'https://vuejsbook.com/img/vuejs/img8-l.jpg' }
       ]
+    }
+  },
+  methods: {
+    showImage: function(image) {
+      this.selectedImage = image
     }
   }
 }
